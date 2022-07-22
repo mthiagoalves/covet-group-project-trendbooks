@@ -8,19 +8,18 @@
 
     <h2 class="title-admin">Page of create your books</h2>
 
-    <div class="label-input">
-        <form action="/books/create" enctype="multipart/form-data" method="POST">
-            @csrf
+    <form action="/books/create" enctype="multipart/form-data" method="POST" class="label-input">
+        @csrf
 
-            <label>Title of the book</label>
-            <input class="form-control" type="text" placeholder="Title..." name="title" id="title">
-            <label >Price</label>
-            <input class="form-control" type="text" placeholder="Price..." name="price" id="price">
-            <label >Select book image</label>
-            <input class="form-control" type="file" name="image" id="image">
+        <label>Title of the book</label>
+        <input class="form-control" type="text" placeholder="Title..." name="title" id="title">
+        <label >Price</label>
+        <input class="form-control" type="text" placeholder="Price..." name="price" id="price">
+        <label >Select book image</label>
+        <input class="form-control" type="file" name="image" id="image">
 
-            <button type="submit" class="btn btn-primary"> Create </button>
-        </form>
-    </div>
+        <button type="submit" class="btn btn-primary"> Create </button>
+    </form>
+
 
 @endsection

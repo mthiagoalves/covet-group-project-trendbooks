@@ -25,7 +25,7 @@ class BookController extends Controller
         $input = $request->validate([
             'title' => 'required|string',
             'price' => 'required|integer',
-            'image' => 'required|string'
+            'image' => 'required|mimes:jpg,bmp,png'
         ]);
 
         $file = $input['image'];
