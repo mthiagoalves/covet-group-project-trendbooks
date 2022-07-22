@@ -37,7 +37,7 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="text-log-in">Hi, {{auth()->user()->name}}</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-log-in">LOG-IN</a>
+                            <a href="{{ route('login') }}" class="text-log-in">LOGIN</a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="text-log-in">REGISTER</a>

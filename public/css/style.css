@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 .navbar {
@@ -22,13 +21,33 @@
     text-decoration: none;
 }
 
-.nav-item,
-.-item {
-    text-decoration: none;
-    list-style: none;
-    color: #484848;
+.login-area {
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    margin-left: 20px;
 }
 
-.nav-link.active {
+.text-log-in {
+    text-decoration: none;
+    color: rgb(45, 45, 45);
     font-weight: bold;
+    letter-spacing: 2px;
+    margin-left: 18px;
+    font-size: 12px;
+}
+
+.label-input {
+    margin: 0 50px 0 50px;
+}
+
+.title-admin {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.btn.btn-primary {
+    margin-top: 20px;
 }
