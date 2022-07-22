@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Books;
+use App\Models\Genres;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -13,6 +14,15 @@ class BookController extends Controller
         $books = Books::all();
 
         return view('welcome', compact('books'));
+    }
+
+    public function admin()
+    {
+        $books = Books::all();
+
+        $genres = Genres::all();
+
+        return view('admin', compact('books', 'genres'));
     }
 
     public function create()
@@ -41,7 +51,7 @@ class BookController extends Controller
     {
         $books = Books::find($id);
 
-        return view('update-book', compact('products'));
+        return view('update-book', compact('books'));
     }
 
     public function update($id)
@@ -60,6 +70,6 @@ class BookController extends Controller
     {
         Books::find($id)->delete();
 
-        return view('/admin')->with('msg', 'Book deleted sucess');
+        return redirect('/admin')->with('msg', 'Book deleted sucess');
     }
 }

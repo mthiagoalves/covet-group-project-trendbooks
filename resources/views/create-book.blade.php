@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <h1>Admin Page  </h1>
+    <h1 class="title-admin">Admin Page</h1>
 
-    <h2 class="title-admin">Page of create your books</h2>
+    <h2 class="title-admin">Create your books</h2>
 
     <form action="/books/create" enctype="multipart/form-data" method="POST" class="label-input">
         @csrf
