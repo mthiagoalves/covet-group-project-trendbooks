@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Books;
-use App\Models\Genres;
+use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -11,16 +11,18 @@ class BookController extends Controller
 
     public function show()
     {
-        $books = Books::all();
+        $books = Book::all();
 
-        return view('welcome', compact('books'));
+        $genres = Genre::all();
+
+        return view('welcome', compact('books', 'genres'));
     }
 
     public function admin()
     {
-        $books = Books::all();
+        $books = Book::all();
 
-        $genres = Genres::all();
+        $genres = Genre::all();
 
         return view('admin', compact('books', 'genres'));
     }
@@ -34,6 +36,8 @@ class BookController extends Controller
     {
         $input = $request->validate([
             'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
             'price' => 'required|integer',
             'image' => 'required|mimes:jpg,bmp,png'
         ]);
@@ -42,33 +46,33 @@ class BookController extends Controller
         $path = $file->store('images', 'public');
         $input['image'] = $path;
 
-        Books::create($input);
+        Book::create($input);
 
         return redirect('admin')->with('msg', 'Book created sucess');
     }
 
     public function edit($id)
     {
-        $books = Books::find($id);
+        $books = Book::find($id);
 
         return view('update-book', compact('books'));
     }
 
     public function update($id)
     {
-        $books = Books::find($id);
+        $books = Book::find($id);
 
         $books->title = request('title');
         $books->price = request('price');
         $books->image = request('image');
         $books->save();
 
-        return redirect('admin')->with('msg' . 'Book updated sucess');
+        return redirect('admin')->with('msg', 'Book updated sucess');
     }
 
     public function destroy($id)
     {
-        Books::find($id)->delete();
+        Book::find($id)->delete();
 
         return redirect('/admin')->with('msg', 'Book deleted sucess');
     }

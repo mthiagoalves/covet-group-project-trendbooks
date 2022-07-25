@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'BookController@show');
 
-Route::get('/admin', 'BookController@admin', 'GenreController@admin');
+Route::get('/wishlist', 'WishlistController@show');
+
+Route::get('/admin', 'BookController@admin', 'GenreController@admin')->middleware('auth');;
 
 Route::get('/books/create', 'BookController@create')->middleware('auth');
 
@@ -27,8 +29,6 @@ Route::get('/books/update/{id}', 'BookController@edit')->middleware('auth');
 Route::put('books/update/{id}', 'BookController@update')->middleware('auth');
 
 Route::delete('books/delete/{id}', 'BookController@destroy')->middleware('auth');
-
-
 
 Route::get('/genre/create', 'GenreController@create')->middleware('auth');
 

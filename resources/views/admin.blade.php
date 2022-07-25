@@ -16,14 +16,14 @@
 
     <h2 class="title-secations">All Books</h2>
 
-    <div class="card-container">
+    <div class="card-container-admin">
         @foreach ($books as $book)
 
-            <div class="card" style="width: 18rem;">
+            <div class="card admin" style="width: 18rem;">
                 <img class="card-img-top" src="{{Storage::disk('public')->url($book->image)}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$book->title}}</h5>
-                    <p class="card-text">{{$book->price}}</p>
+                    <p class="card-text">$ {{$book->price}}</p>
                     <div class="btn-btn">
                         <a href="/books/update/{{$book->id}}" class="btn btn-primary">Edit</a>
                         <form action="/books/delete/{{$book->id}}" method="POST">
@@ -47,7 +47,7 @@
 
         @foreach($genres as $genre)
 
-            <div class="card" style="width: 18rem;">
+            <div class="card admin" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">{{$genre->genre}}</h5>
                     <div class="btn-btn">

@@ -13,6 +13,10 @@
 
         <label>Title of the book</label>
         <input class="form-control" type="text" placeholder="Title..." name="title" id="title">
+        <label >Author</label>
+        <input class="form-control" type="text" placeholder="Author..." name="author" id="author">
+        <label >Description</label>
+        <input class="form-control" type="textarea" placeholder="Description..." name="description" id="description">
         <label >Price</label>
         <input class="form-control" type="text" placeholder="Price..." name="price" id="price">
         <label >Select book image</label>

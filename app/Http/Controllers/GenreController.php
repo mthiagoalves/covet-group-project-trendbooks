@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genres;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
     public function show()
     {
-        $genres = Genres::all();
+        $genres = Genre::all();
 
         return view('welcome', compact('genres'));
     }
@@ -25,21 +25,21 @@ class GenreController extends Controller
             'genre' => 'required|string'
         ]);
 
-        Genres::create($input);
+        Genre::create($input);
 
         return redirect('admin')->with('msg', 'Genre created sucess');
     }
 
     public function edit($id)
     {
-        $genres = Genres::find($id);
+        $genres = Genre::find($id);
 
         return view('update-genre', compact('genres'));
     }
 
     public function update($id)
     {
-        $genres = Genres::find($id);
+        $genres = Genre::find($id);
 
         $genres->genre = request('genre');
         $genres->save();
@@ -49,7 +49,7 @@ class GenreController extends Controller
 
     public function destroy($id)
     {
-        Genres::find($id)->delete();
+        Genre::find($id)->delete();
 
         return redirect('/admin')->with('msg', 'Genre deleted sucess');
     }

@@ -14,10 +14,14 @@
 
         <label>Title of the book</label>
         <input class="form-control" type="text" placeholder="Title..." name="title" id="title" value="{{$books->title}}">
+        <label >Author</label>
+        <input class="form-control" type="text" placeholder="Author..." name="author" id="author" value="{{$books->author}}">
+        <label >Description</label>
+        <input class="form-control" type="textarea" placeholder="Description..." name="description" id="description" value="{{$books->description}}">
         <label >Price</label>
         <input class="form-control" type="text" placeholder="Price..." name="price" id="price" value="{{$books->price}}">
         <label >Select book image</label>
-        <input class="form-control" type="file" name="image" id="image" value="{{$books->image}}">
+        <input class="form-control" type="file" name="image" id="image">
 
         <button type="submit" class="btn btn-primary"> Update </button>
 
