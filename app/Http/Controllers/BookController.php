@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -75,5 +77,14 @@ class BookController extends Controller
         Book::find($id)->delete();
 
         return redirect('/admin')->with('msg', 'Book deleted sucess');
+    }
+
+    public function wishlist($id)
+    {
+        $user = Auth::user();
+
+        $user->wishlistBooks()->attach($id);
+
+        return redirect('wishlist')->with('msg', 'wishlist added');
     }
 }

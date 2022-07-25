@@ -18,6 +18,10 @@ Route::get('/', 'BookController@show');
 
 Route::get('/wishlist', 'WishlistController@show');
 
+Route::get('/books/wishlist/{id}', 'BookController@wishlist')->middleware('auth');
+
+Route::post('/books/wishlist/{id}', 'BookController@wishlist')->middleware('auth');
+
 Route::get('/admin', 'BookController@admin', 'GenreController@admin')->middleware('auth');;
 
 Route::get('/books/create', 'BookController@create')->middleware('auth');

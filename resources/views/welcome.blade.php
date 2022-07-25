@@ -60,7 +60,12 @@
                                 <p class="card-text">${{$book->price}}</p>
                                 <div class="product-wish">
                                     <button href="#" class="btn btn-primary"> Add to cart </button>
-                                    <a href="#"><i class="fa-solid fa-heart"></i></i></a>
+                                    <form action="/books/wishlist/{{$book->id}}" method="POST">
+                                        @csrf
+                                        <a href="/books/wishlist/{{$book->id}}" onclick="books.preventDefault();
+                                        this.closest('form').submit();">
+                                        <i class="fa-solid fa-heart"></i></a>
+                                    </form>
                                 </div>
 
 
