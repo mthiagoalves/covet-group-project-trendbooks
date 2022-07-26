@@ -16,9 +16,7 @@
 
 
     </head>
-
         <body>
-
             <nav class="navbar navbar-expand-lg" id="navbar">
                 <div class="container-fluid">
                   <img src="/images/trendesignbook-logo.png" alt="logotipo" id="logo">
@@ -32,33 +30,27 @@
                     </div>
                   </div>
                 </div>
-                @if (Route::has('login'))
-                    <div class="login-area">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="text-log-in">Hi, {{auth()->user()->name}}</a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-log-in">LOGIN</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="text-log-in">REGISTER</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
                 @guest
-                    @else
-                        <li class="nav-item">
-                            <div class="-menu -menu-end" aria-labelledby="navbar">
-                                <a class="-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                    <div class="login-area">
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                        @else
+                        <li class="nav-item ">
+                            <a id="navbar" class="nav-link -toggle" href="/home" role="button" data-bs-toggle="" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Hi, {{ Auth::user()->name }}
+                            </a>
                         </li>
+                    </div>
+
                 @endguest
               </nav>
 

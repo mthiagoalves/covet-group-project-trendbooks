@@ -20,6 +20,17 @@ class BookController extends Controller
         return view('welcome', compact('books', 'genres'));
     }
 
+    public function showWishlist()
+    {
+        $genres = Genre::all();
+
+        $user = Auth::user();
+
+        $wishlist = $user->wishlistBooks;
+
+        return view('wishlist', compact('wishlist', 'genres'));
+    }
+
     public function admin()
     {
         $books = Book::all();
@@ -31,24 +42,28 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('create-book');
+        $genres = Genre::all();
+
+        return view('create-book', compact('genres'));
     }
 
     public function store(Request $request)
     {
-        $input = $request->validate([
+        $book = $request->validate([
             'title' => 'required|string',
             'author' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
-            'image' => 'required|mimes:jpg,bmp,png'
+            'image' => 'required|image|max:10000',
         ]);
 
-        $file = $input['image'];
+        $file = $book['image'];
         $path = $file->store('images', 'public');
-        $input['image'] = $path;
+        $book['image'] = $path;
 
-        Book::create($input);
+        $book = $request->genre_id = 'genre_id';
+
+        Book::create($book);
 
         return redirect('admin')->with('msg', 'Book created sucess');
     }
@@ -65,8 +80,17 @@ class BookController extends Controller
         $books = Book::find($id);
 
         $books->title = request('title');
+        $books->author = request('author');
+        $books->description = request('description');
         $books->price = request('price');
         $books->image = request('image');
+
+        $file = $books['image'];
+        $path = $file->store('images', 'public');
+        $books['image'] = $path;
+
+
+
         $books->save();
 
         return redirect('admin')->with('msg', 'Book updated sucess');
@@ -86,5 +110,16 @@ class BookController extends Controller
         $user->wishlistBooks()->attach($id);
 
         return redirect('wishlist')->with('msg', 'wishlist added');
+    }
+
+    public function leaveWishlist($id)
+    {
+        $user = Auth::user();
+
+        $user->wishlistBooks()->detach($id);
+
+        $books = Book::findOrFail($id);
+
+        return redirect('wishlist')->with('msg', 'removed book for your wishlist');
     }
 }
