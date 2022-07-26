@@ -10,9 +10,11 @@
             <div class="items-genre">
                 <div class="items-sub-genre">
                     <h3>Popular Subjects</h3>
-                    @foreach($genres as $genre)
-                        <a class="genre-title">{{$genre->genre}}</a>
-                    @endforeach
+                    <a class="genre-title">{{$genres[0]->genre}}</a>
+                    <a class="genre-title">{{$genres[1]->genre}}</a>
+                    <a class="genre-title">{{$genres[2]->genre}}</a>
+                    <a class="genre-title">{{$genres[3]->genre}}</a>
+                    <a class="genre-title">{{$genres[4]->genre}}</a>
                 </div>
             </div>
         </div>
@@ -20,9 +22,10 @@
             <div class="items-genre">
                 <div class="items-sub-genre">
                     <h3>Fiction</h3>
-                    @foreach($genres as $genre)
-                        <a class="genre-title">{{$genre->genre}}</a>
-                    @endforeach
+                    <a class="genre-title">{{$genres[5]->genre}}</a>
+                    <a class="genre-title">{{$genres[6]->genre}}</a>
+                    <a class="genre-title">{{$genres[7]->genre}}</a>
+                    <a class="genre-title">{{$genres[8]->genre}}</a>
                 </div>
             </div>
         </div>
@@ -30,9 +33,13 @@
             <div class="items-genre">
                 <div class="items-sub-genre">
                     <h3>Non-Fiction</h3>
-                    @foreach($genres as $genre)
-                        <a class="genre-title">{{$genre->genre}}</a>
-                    @endforeach
+                    <a class="genre-title">{{$genres[9]->genre}}</a>
+                    <a class="genre-title">{{$genres[10]->genre}}</a>
+                    <a class="genre-title">{{$genres[11]->genre}}</a>
+                    <a class="genre-title">{{$genres[12]->genre}}</a>
+                    <a class="genre-title">{{$genres[13]->genre}}</a>
+                    <a class="genre-title">{{$genres[14]->genre}}</a>
+                    <a class="genre-title">{{$genres[15]->genre}}</a>
                 </div>
             </div>
         </div>
