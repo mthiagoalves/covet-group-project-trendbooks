@@ -49,21 +49,33 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        $book = $request->validate([
-            'title' => 'required|string',
-            'author' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|integer',
-            'image' => 'required|image|max:10000',
-        ]);
+        // $book = $request->validate([
+        //     'title' => 'required|string',
+        //     'author' => 'required|string',
+        //     'description' => 'required|string',
+        //     'price' => 'required|integer',
+        //     'image' => 'required|image|max:10000',
+        //     'genre_id'
+        // ]);
+
+
+
+        $book = new Book;
+
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->description = $request->description;
+        $book->price = $request->price;
+        $book->image = $request->image;
+        $book->genre_id = $request->genre_id;
+
+        $this->validateBooks($book);
 
         $file = $book['image'];
         $path = $file->store('images', 'public');
         $book['image'] = $path;
 
-        $book = $request->genre_id = 'genre_id';
-
-        Book::create($book);
+        $book->save();
 
         return redirect('admin')->with('msg', 'Book created sucess');
     }
@@ -88,8 +100,6 @@ class BookController extends Controller
         $file = $books['image'];
         $path = $file->store('images', 'public');
         $books['image'] = $path;
-
-
 
         $books->save();
 
@@ -121,5 +131,17 @@ class BookController extends Controller
         $books = Book::findOrFail($id);
 
         return redirect('wishlist')->with('msg', 'removed book for your wishlist');
+    }
+
+    public function validateBooks()
+    {
+        return request()->validate([
+            'title' => 'required|string',
+            'author' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'image' => 'required|image|max:10000',
+            'genre_id' => 'required'
+        ]);
     }
 }
