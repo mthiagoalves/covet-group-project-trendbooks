@@ -4,67 +4,56 @@
 
 @section('content')
 
-<div class="sidebar-container">
-    <div class="grid-sidebar">
-        <div class="genres-container">
-            <div class="items-genre">
-                <div class="items-sub-genre">
-                    <h3>Popular Subjects</h3>
-                    <a class="genre-title">{{$genres[0]->genre}}</a>
-                    <a class="genre-title">{{$genres[1]->genre}}</a>
-                    <a class="genre-title">{{$genres[2]->genre}}</a>
-                    <a class="genre-title">{{$genres[3]->genre}}</a>
-                    <a class="genre-title">{{$genres[4]->genre}}</a>
+    <div class="sidebar-container">
+        <div class="grid-sidebar">
+            <div class="genres-container">
+                <div class="items-genre">
+                    <div class="items-sub-genre">
+                        <h3>Popular Subjects</h3>
+                        @foreach($genres as $genre)
+                            <a class="genre-title">{{$genre->genre}}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="genres-container">
+                <div class="items-genre">
+                    <div class="items-sub-genre">
+                        <h3>Fiction</h3>
+                        @foreach($genres as $genre)
+                            <a class="genre-title">{{$genre->genre}}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="genres-container">
+                <div class="items-genre">
+                    <div class="items-sub-genre">
+                        <h3>Non-Fiction</h3>
+                        @foreach($genres as $genre)
+                            <a class="genre-title">{{$genre->genre}}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="genres-container">
-            <div class="items-genre">
-                <div class="items-sub-genre">
-                    <h3>Fiction</h3>
-                    <a class="genre-title">{{$genres[5]->genre}}</a>
-                    <a class="genre-title">{{$genres[6]->genre}}</a>
-                    <a class="genre-title">{{$genres[7]->genre}}</a>
-                    <a class="genre-title">{{$genres[8]->genre}}</a>
-                </div>
-            </div>
-        </div>
-        <div class="genres-container">
-            <div class="items-genre">
-                <div class="items-sub-genre">
-                    <h3>Non-Fiction</h3>
-                    <a class="genre-title">{{$genres[9]->genre}}</a>
-                    <a class="genre-title">{{$genres[10]->genre}}</a>
-                    <a class="genre-title">{{$genres[11]->genre}}</a>
-                    <a class="genre-title">{{$genres[12]->genre}}</a>
-                    <a class="genre-title">{{$genres[13]->genre}}</a>
-                    <a class="genre-title">{{$genres[14]->genre}}</a>
-                    <a class="genre-title">{{$genres[15]->genre}}</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="colunm-text">
-        <div class="text-select">
-            <a href="#">My wishlist</a>
-        </div>
-        @if($wishlist != null)
-            @foreach($wishlist as $book)
-                <div class="card-container">
-                    <div class="card">
-                    <div class="row g-0">
-                        <div class="col-sm-5">
-                            <img src="{{Storage::disk('public')->url($book->image)}}" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col">
-                            <div class="card-body">
-                                <h5 class="card-title"> {{$book->title}} </h5>
-                                <p class="card-text">Genre</p>
-                                <p class="classification"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                                <p class="card-text">${{$book->price}}</p>
-                                <div class="product-wish">
-                                    <button href="#" class="btn btn-primary"> Add to cart </button>
+        <div class="colunm-text">
+            <div class="text-select">
+                <a href="#">My wishlist</a>
+            </div>
+            @if($wishlist)
+                @foreach($wishlist as $book)
+                    <div class="card-container">
+                        <div class="card mb-3" style="max-width: 650px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                <img src="{{Storage::disk('public')->url($book->image)}}" class="card-img" style="height: 100%" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$book->title}}</h5>
+                                    <p class="card-text">Description: {{$book->description}}</p>
                                     <form action="/books/leave/{{$book->id}}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -73,17 +62,16 @@
                                         <i class="fa-solid fa-heart"></i> Remove</a>
                                     </form>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        @else
-            <p>Nothing is here</p>
-        @endif
-
+                @endforeach
+            @else
+                <p>Nothing is here</p>
+            @endif
+        </div>
     </div>
-</div>
 
 
 

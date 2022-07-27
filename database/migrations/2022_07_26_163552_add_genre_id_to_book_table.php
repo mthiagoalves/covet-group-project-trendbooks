@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('book', function (Blueprint $table) {
-            $table->bigInteger("genre_id")->unsigned();
+            $table->bigInteger("genre_id")->after('id')->unsigned();
             $table->foreign('genre_id')
                 ->references('id')
                 ->on('genre');
@@ -29,10 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('book', function (Blueprint $table) {
-            $table->bigInteger("book_id")->unsigned();
-            $table->foreign('book_id')
+            $table->bigInteger("genre_id")->unsigned();
+            $table->foreign('genre_id')
                 ->references('id')
-                ->on('book')
+                ->on('genre')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

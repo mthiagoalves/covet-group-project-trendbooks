@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('title', 'TrendBook')
 
@@ -18,7 +18,7 @@
         <label >Description</label>
         <input class="form-control" type="text" placeholder="Description..." name="description" id="description">
         <label >Price</label>
-        <input class="form-control" type="text" placeholder="Price..." name="price" id="price">
+        <input class="form-control" type="number" step="any" placeholder="Price..." name="price" id="price">
 
         <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="genre_id">
             <option selected>Open this select menu</option>

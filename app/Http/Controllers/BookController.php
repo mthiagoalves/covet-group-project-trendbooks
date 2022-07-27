@@ -49,17 +49,6 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        // $book = $request->validate([
-        //     'title' => 'required|string',
-        //     'author' => 'required|string',
-        //     'description' => 'required|string',
-        //     'price' => 'required|integer',
-        //     'image' => 'required|image|max:10000',
-        //     'genre_id'
-        // ]);
-
-
-
         $book = new Book;
 
         $book->title = $request->title;
@@ -101,6 +90,8 @@ class BookController extends Controller
         $path = $file->store('images', 'public');
         $books['image'] = $path;
 
+
+
         $books->save();
 
         return redirect('admin')->with('msg', 'Book updated sucess');
@@ -119,7 +110,7 @@ class BookController extends Controller
 
         $user->wishlistBooks()->attach($id);
 
-        return redirect('wishlist')->with('msg', 'wishlist added');
+        return redirect('wishlist')->with('msg', 'book added to your wishlist');
     }
 
     public function leaveWishlist($id)
@@ -130,7 +121,7 @@ class BookController extends Controller
 
         $books = Book::findOrFail($id);
 
-        return redirect('wishlist')->with('msg', 'removed book for your wishlist');
+        return redirect('wishlist')->with('msg', 'book removed to your wishlist');
     }
 
     public function validateBooks()
@@ -139,7 +130,7 @@ class BookController extends Controller
             'title' => 'required|string',
             'author' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|integer',
+            'price' => 'required|numeric',
             'image' => 'required|image|max:10000',
             'genre_id' => 'required'
         ]);

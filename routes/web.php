@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'BookController@show');
 
-Route::get('/wishlist', 'BookController@showWishlist');
+Route::get('/wishlist', 'BookController@showWishlist')->middleware('auth');
 
 Route::get('/books/wishlist/{id}', 'BookController@wishlist')->middleware('auth');
 
