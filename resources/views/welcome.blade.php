@@ -4,11 +4,9 @@
 
 @section('content')
 
-<div class="sidebar-container">
-
-    <div class="grid-sidebar sidenav" id="mySidenav">
+<div class="sidebar-container" id="sidebar-container">
+    <div class="grid-sidebar">
         <div class="genres-container">
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             <div class="items-genre">
                 <div class="items-sub-genre">
                     <h3>Popular Subjects</h3>
@@ -55,10 +53,11 @@
         </div>
         <div class="card-container">
             @foreach ($books as $book)
-                <div class="card">
+            <div class="card-size">
+                <div class="card-size-all">
                     <div class="card-b">
                         <div class="card-img">
-                            <img src="{{Storage::disk('public')->url($book->image)}}" alt="...">
+                            <img src="{{Storage::disk('public')->url($book->image)}}" class="card-img-right" alt="...">
                         </div>
                         <div class="card-home">
                             <div class="card-head">
@@ -79,6 +78,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
             @endforeach
         </div>
     </div>
