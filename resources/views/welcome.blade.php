@@ -57,7 +57,7 @@
                 <div class="card-size-all">
                     <div class="card-b">
                         <div class="card-img">
-                            <img src="{{Storage::disk('public')->url($book->image)}}" class="card-img-right" alt="...">
+                            <img src="{{Storage::disk('public')->url($book->image)}}" id="img-card" alt="...">
                         </div>
                         <div class="card-home">
                             <div class="card-head">

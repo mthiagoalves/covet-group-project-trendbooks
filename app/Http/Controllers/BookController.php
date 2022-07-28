@@ -90,8 +90,6 @@ class BookController extends Controller
         $path = $file->store('images', 'public');
         $books['image'] = $path;
 
-
-
         $books->save();
 
         return redirect('admin')->with('msg', 'Book updated sucess');
