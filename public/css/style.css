@@ -32,8 +32,12 @@ body {
     text-decoration: none;
 }
 
-#navbar.navl-link {
-    display: flex;
+.nav-link{
+    color: #adadad;
+}
+
+.nav-link.active {
+    font-weight: 600;
 }
 
 .d-none {
