@@ -20,6 +20,14 @@
         <input class="form-control" type="textarea" placeholder="Description..." name="description" id="description" value="{{$books->description}}">
         <label >Price</label>
         <input class="form-control" type="text" placeholder="Price..." name="price" id="price" value="{{$books->price}}">
+
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="genre_id">
+            <option selected>Open this select menu</option>
+            @foreach ($genres as $genre)
+                <option value="{{$genre->id}}">{{$genre->genre}}</option>
+            @endforeach
+        </select>
+
         <label >Select book image</label>
         <input class="form-control" type="file" name="image" id="image">
 

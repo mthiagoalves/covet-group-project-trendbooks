@@ -27,8 +27,8 @@
                   </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/">Book Store</a>
-                        <a class="nav-link" href="/wishlist">Wishlist</a>
+                            <a class="nav-link active" aria-current="page" href="/">Book Store</a>
+                            <a class="nav-link" href="/wishlist">Wishlist</a>
                         </div>
                         @guest
                         <div class="login-area">
@@ -45,6 +45,7 @@
                             @endif
                             @else
                             <li class="nav-item user-hello">
+                                <p><i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i></p>
                                 <a id="navbar" class="nav-link -toggle" href="/home" role="button" data-bs-toggle="" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Hi, {{ Auth::user()->name }}
                                 </a>

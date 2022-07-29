@@ -13,11 +13,13 @@ class BookController extends Controller
 
     public function show()
     {
-        $books = Book::all();
-
         $genres = Genre::all();
 
-        return view('welcome', compact('books', 'genres'));
+        $dolarBook = Book::with([
+            'genre'
+            ])->get();
+
+        return view('welcome', compact('genres', 'dolarBook'));
     }
 
     public function showWishlist()
